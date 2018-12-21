@@ -6,16 +6,23 @@
 
 1. Clone this repository.
 2. Open the solution with **Visual Studio 2017** or **Rider**.
-3. Add the Google `ClientId` and `ClientSecret` to your appsettings.json.
+3. Go to https://console.developers.google.com to get a client ID and client secret for using Google OAuth
+4. Run the following commands to add the OAuth keys as secrets:
+    - dotnet user-secrets set "Authentication:Google:ClientSecret" "**ENTER YOUR CLIENT SECRET HERE**"
+    - dotnet user-secrets set "Authentication:Google:ClientId" "**ENTER YOUR CLIENT ID HERE**"
 
 ### Database
 
 1. Download and install [PostgreSQL 10.5](https://www.postgresql.org/download/) on your machine for local development.
 2. Use **pgAdmin 4** to create a new database for this project.
-3. Add a connection string for this database to your appsettings.json.
-    - An example of a connection string might be `Host=localhost;Username=postgres;Password=;Database=;`.
-4. Add this same connection string to the appsettings.json of the ToBeRenamed.Database project.
-5. Run the ToBeRenamed.Database project. This will apply all migrations to setup an initial database.
+3. Run the following commands to add connection strings to your secrets
+    - dotnet user-secrets set "ConnectionStrings:DefaultConnection" "Host=localhost;Username=postgres;Password=password;Database=Plum;"
+    - dotnet user-secrets set "ConnectionStrings:TestConnection" "Host=localhost;Username=postgres;Password=password;Database=TestPlum;"
+    - dotnet user-secrets set "ConnectionStrings:PostgresConnection" "Host=localhost;Username=postgres;Password=password;Database=postgres;"
+    - **NOTE** - Make sure that the password used in the PostgresConnection connection string is the same password used when setting up your postgres server
+    - **NOTE** - You may (and should) change the default passwords of the database strings given above
+4. Run the ToBeRenamed.Database project. This will apply all migrations to setup an initial database.
+    - Running "dotnet run -delete" will attempt to drop the databases and recreate them
 
 You can now build and run the web application.
 
