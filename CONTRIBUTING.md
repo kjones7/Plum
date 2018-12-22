@@ -22,7 +22,7 @@
     - **NOTE** - Make sure that the password used in the PostgresConnection connection string is the same password used when setting up your postgres server
     - **NOTE** - You may (and should) change the default passwords of the database strings given above
 4. Run the ToBeRenamed.Database project. This will apply all migrations to setup an initial database.
-    - Running "dotnet run -delete" will attempt to drop the databases and recreate them
+    - Running "dotnet run delete" will attempt to drop the databases and recreate them
 
 You can now build and run the web application.
 
